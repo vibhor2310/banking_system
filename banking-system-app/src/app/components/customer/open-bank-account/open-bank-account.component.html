@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        <h2>Open Bank Account</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="accountForm" (ngSubmit)="onFormSubmit()">
+          <div class="mb-3">
+            <label for="accountType" class="form-label">Account Type</label>
+            <select id="accountType" formControlName="accountType" class="form-control">
+              <option value="">Select Account Type</option>
+              <option value="SAVINGS">SAVINGS</option>
+              <option value="CURRENT">CURRENT</option>
+              <option value="SALARY">SALARY</option>
+            </select>
+            <div *ngIf="accountForm.controls['accountType'].touched && accountForm.controls['accountType'].invalid">
+              <small class="text-danger">Account type is required.</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="balance" class="form-label">Balance</label>
+            <input type="number" id="balance" formControlName="balance" class="form-control" value="5000">
+            <div *ngIf="accountForm.controls['balance'].touched && accountForm.controls['balance'].invalid">
+              <small class="text-danger">Balance is required and must be at least 1000.</small>
+            </div>
+          </div>
+  
+          <div class="mb-3">
+            <label for="aadharNumber" class="form-label">Aadhar Number</label>
+            <input type="text" id="aadharNumber" formControlName="aadharNumber" class="form-control">
+            <div *ngIf="accountForm.controls['aadharNumber'].touched && accountForm.controls['aadharNumber'].invalid">
+              <small class="text-danger">Please provide a valid Aadhar Number.</small>
+            </div>
+            <!-- <div>
+            <input type="file" (change)="onFileChange($event)" >
+            <button class="btn btn-primary" (click)="uploadFile()">Upload</button>
+            <div *ngIf="msg" class="alert alert-success mt-3">
+              {{ msg }}
+            </div>
+          </div> -->
+          </div>
+  
+          <div class="mb-3">
+            <label for="panNumber" class="form-label">PAN Number</label>
+            <input type="text" id="panNumber" formControlName="panNumber" class="form-control">
+            <div *ngIf="accountForm.controls['panNumber'].touched && accountForm.controls['panNumber'].invalid">
+              <small class="text-danger">Please provide a valid PAN Number.</small>
+            </div>
+            <!-- <div>
+              <input type="file" (change)="onFileSelect($event)" >
+              <button class="btn btn-primary" (click)="uploadFile()">Upload</button>
+            </div> -->
+          </div>
+  
+          <button type="submit" class="btn btn-primary" [disabled]="accountForm.invalid">Open Account</button>
+  
+          <div *ngIf="successMsg" class="alert alert-success mt-3">
+            {{ successMsg }}
+          </div>
+          <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+            {{ errorMsg }}
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

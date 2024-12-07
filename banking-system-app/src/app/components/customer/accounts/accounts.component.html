@@ -1,0 +1,20 @@
+<div class="container mt-5">
+    <div class="row">
+      <div *ngFor="let account of accounts" class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Account Number: {{ account.accountNumber }}</h5>
+            <p class="card-text">Account Type: {{ account.accountType }}</p>
+            <p class="card-text">Balance: {{ account.balance }}</p>
+            <p class="card-text">
+              Status: 
+              <span [style.color]="account.status === 'Active'? 'green' : 'red'">{{ account.status }}</span>
+            </p>
+            <button class="btn btn-primary" (click)="goToAccountDashboard(account.status,account.id)">Go to Dashboard</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

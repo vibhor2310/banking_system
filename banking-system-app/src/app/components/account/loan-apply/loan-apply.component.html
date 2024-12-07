@@ -1,0 +1,46 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        Apply for a Loan
+      </div>
+      <div class="card-body">
+        <form [formGroup]="loanForm" (ngSubmit)="onFormSubmit()">
+          <div class="mb-3">
+            <label for="loanType" class="form-label">Loan Type</label>
+            <select id="loanType" formControlName="loanType" class="form-control">
+              <option value="">Select Loan Type</option>
+              <option value="CAR">CAR</option>
+              <option value="HOME">HOME</option>
+              <option value="STUDY">STUDY</option>
+              <option value="PROPERTY">PROPERTY</option>
+            </select>
+            <div *ngIf="loanForm.controls['loanType'].touched && loanForm.controls['loanType'].invalid">
+              <small class="text-danger">Loan type is required.</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="amount" class="form-label">Amount</label>
+            <input type="number" id="amount" formControlName="amount" class="form-control" placeholder="Enter amount">
+            <div *ngIf="loanForm.controls['amount'].touched && loanForm.controls['amount'].invalid">
+              <small class="text-danger">Amount is required and must be at least 1.</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="purpose" class="form-label">Purpose</label>
+            <textarea id="purpose" formControlName="purpose" class="form-control" placeholder="Enter purpose"></textarea>
+            <div *ngIf="loanForm.controls['purpose'].touched && loanForm.controls['purpose'].invalid">
+              <small class="text-danger">Purpose is required.</small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="loanForm.invalid">Apply</button>
+        </form>
+        <div *ngIf="successMsg" class="alert alert-success mt-3">
+          {{ successMsg }}
+        </div>
+        <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

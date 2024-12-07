@@ -1,0 +1,37 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      Transfer Money
+    </div>
+    <div class="card-body">
+      <div class="alert alert-success" *ngIf="msg">
+        {{ msg }}
+      </div>
+      <form [formGroup]="transferForm" (ngSubmit)="onFormSubmit()">
+        <div class="mb-3">
+          <label for="receiverAccountNumber" class="form-label">Receiver Account Number</label>
+          <input type="text" id="receiverAccountNumber" formControlName="receiverAccountNumber" class="form-control" placeholder="Enter receiver's account number" (keyup)="verify()">
+          <div *ngIf="transferForm.controls['receiverAccountNumber'].touched && transferForm.controls['receiverAccountNumber'].invalid">
+            <small class="text-danger">Receiver account number is required.</small>
+          </div>
+          <span *ngIf="customer">Name of the Receiver: {{ customer.firstName }} {{ customer.lastName }}</span>
+          <span *ngIf="!customer && transferForm.controls['receiverAccountNumber'].touched">Invalid Account Number</span>
+        </div>
+        <div class="mb-3">
+          <label for="amount" class="form-label">Amount to Transfer</label>
+          <input type="number" id="amount" formControlName="amount" class="form-control" placeholder="Enter amount">
+          <div *ngIf="transferForm.controls['amount'].touched && transferForm.controls['amount'].invalid">
+            <small class="text-danger">Amount is required and must be at least 1.</small>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!isReceiverAccountValid||transferForm.invalid">Transfer</button>
+      </form>
+      <div *ngIf="successMsg" class="alert alert-success mt-3">
+        {{ successMsg }}
+      </div>
+      <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+        {{ errorMsg }}
+      </div>
+    </div>
+  </div>
+</div>

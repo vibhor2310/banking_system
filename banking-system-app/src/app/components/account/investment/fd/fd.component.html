@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header bg-primary text-white text-center">
+      Apply for Fixed Deposit (FD)
+    </div>
+    <div class="card-body">
+      <form [formGroup]="fdForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="amount" class="form-label">Amount</label>
+          <input type="number" id="amount" formControlName="amount" class="form-control" placeholder="Enter amount (minimum amount is 50,000 INR)">
+          <div *ngIf="fdForm.controls['amount'].touched && fdForm.controls['amount'].invalid">
+            <small class="text-danger">Amount is required and must be at least 50000 INR.</small>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="years" class="form-label">Years</label>
+          <input type="number" id="years" formControlName="years" class="form-control" placeholder="Enter years (It must be atleast 5 and maximum upto 50)">
+          <div *ngIf="fdForm.controls['years'].touched && fdForm.controls['years'].invalid">
+            <small class="text-danger">Years are required and must be at least 5 and should not exceed 50.</small>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+        <button type="submit" class="btn btn-primary" [disabled]="fdForm.invalid">Apply</button>
+        <div class="ml-3">
+          <p class="mb-0">Current Interest rate : {{ interestRate }} %</p>
+        </div>
+      </div>
+      </form>
+      <div *ngIf="totalAmount !== undefined" class="mt-3">
+        <p class="alert alert-info">Estimated Amount: ₹{{ totalAmount.toFixed(2) }}</p>
+      </div>
+      <div *ngIf="successMsg" class="alert alert-success mt-3">
+        {{ successMsg }}
+      </div>
+      <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+        {{ errorMsg }}
+      </div>
+    </div>
+  </div>
+</div>

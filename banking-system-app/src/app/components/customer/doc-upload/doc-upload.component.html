@@ -1,0 +1,55 @@
+<div class="container mt-3">
+    <!-- Aadhar Card Upload -->
+    <div class="card mb-3">
+      <div class="card-header bg-primary text-white text-center">
+        Upload Aadhar Card
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="aadharUpload" class="form-label">Aadhar Card</label>
+          <input type="file" id="aadharUpload" (change)="onFileSelect($event, 'aadhar')" class="form-control">
+        </div>
+        <button class="btn btn-primary" (click)="uploadFileAadhar()">Upload Aadhar Card</button>
+        <div *ngIf="msg1" class="alert alert-success mt-3">
+            {{ msg1 }}
+          </div>
+      </div>
+    </div>
+  
+    <!-- PAN Card Upload -->
+    <div class="card mt-2">
+      <div class="card-header bg-primary text-white text-center">
+        Upload PAN Card
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="panUpload" class="form-label">PAN Card</label>
+          <input type="file" id="panUpload" (change)="onFileSelect($event, 'pan')" class="form-control">
+        </div>
+        <button class="btn btn-primary" (click)="uploadFilePan()">Upload PAN Card</button>
+        <div *ngIf="msg2" class="alert alert-success mt-3">
+            {{ msg2 }}
+          </div>
+      </div>
+    </div>
+    <!-- Photograph upload  -->
+    <div class="card mt-2">
+      <div class="card-header bg-primary text-white text-center">
+        Upload Passport size Photograph
+      </div>
+      <div class="card-body">
+        <div class="mb-3">
+          <label for="photoUpload" class="form-label">Photograph</label>
+          <input type="file" id="photoUpload" (change)="onFileSelect($event, 'photo')" class="form-control">
+        </div>
+        <button class="btn btn-primary" (click)="uploadFilePhoto()">Upload Photograph</button>
+        <div *ngIf="msg3" class="alert alert-success mt-3">
+            {{ msg3 }}
+          </div>
+      </div>
+    </div>
+    <div class="mt-3">
+        <button class="btn btn-primary mb-4" (click)="navigateToOpenAccount()" [disabled]="!(isAadhar&&isPan&&isPhoto)">Submit</button>
+    </div>
+  </div>
+  

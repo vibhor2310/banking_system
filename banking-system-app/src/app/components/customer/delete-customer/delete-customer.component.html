@@ -1,0 +1,28 @@
+<div class="container mt-5">
+    <div class="card text-center">
+      <div class="card-header bg-danger text-white">
+        Warning
+      </div>
+      <div class="card-body">
+        <h4 class="card-title">Are you sure you want to delete your account?</h4>
+        <p class="card-text">This action cannot be undone. Please enter your password to confirm.</p>
+        <form [formGroup]="deleteForm" (ngSubmit)="onDelete()">
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" id="password" formControlName="password" class="form-control" placeholder="Enter your password">
+            <div *ngIf="deleteForm.controls['password'].touched && deleteForm.controls['password'].invalid">
+              <small class="text-danger">Password is required.</small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-danger" [disabled]="deleteForm.invalid">Delete Account</button>
+        </form>
+        <div *ngIf="successMsg" class="alert alert-success mt-3">
+          {{ successMsg }}
+        </div>
+        <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+          {{ errorMsg }}
+        </div>
+      </div>
+    </div>
+  </div>
+  

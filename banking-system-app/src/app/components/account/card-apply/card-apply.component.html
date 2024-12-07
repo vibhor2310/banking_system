@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="card text-center">
+      <div class="card-header">
+        Apply for a Card
+      </div>
+      <div class="card-body d-flex justify-content-around">
+        <div class="card mx-3 p-3" style="width: 18rem; background-color: #e9ecef;">
+          <div class="card-body">
+            <h5 class="card-title">DEBIT Card</h5>
+            <p class="card-text">Suitable for everyday transactions.</p>
+            <button class="btn btn-primary" (click)="applyForCard('DEBIT')">Apply Now</button>
+          </div>
+        </div>
+        <div class="card mx-3 p-3" style="width: 18rem; background-color: #e9ecef;">
+          <div class="card-body">
+            <h5 class="card-title">CREDIT Card</h5>
+            <p class="card-text">Ideal for making purchases on credit.</p>
+            <button class="btn btn-secondary" (click)="applyForCard('CREDIT')">Apply Now</button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="successMsg" class="alert alert-success mt-3">
+        {{ successMsg }}
+      </div>
+      <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+        {{ errorMsg }}
+      </div>
+    </div>
+  </div>
+  

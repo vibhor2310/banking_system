@@ -1,0 +1,27 @@
+<div class="px-3 py-2 text-bg-dark border-bottom mb-3">
+    <div class="container-fluid d-flex flex-wrap justify-content-between">
+      <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-auto clickable-text" (click)="navigateToAccountDashboard()">
+         Hexaware Bank
+      </div>
+      <div class="col-12 col-lg-auto mb-2 mb-lg-0 me-lg-5 clickable-text mt-1" (click)="navigateToCustomerDashboard()">
+        Customer Dashboard
+     </div>
+      <div class="text-end">
+        Welcome &nbsp;
+        {{name}} &nbsp;
+        <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="container-fluid">
+      <div class="panel-wrapper">
+        <div class="left-panel p-4">
+          <h1><i class="fas fa-piggy-bank text-blue-500 mr-2"></i> Hexaware Bank</h1>
+          <p>=== Digital Banking Made for Digital Users ===</p>
+        </div>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <div class="card text-center">
+    <div class="card-header bg-primary text-white">
+      Investment Options
+      
+    </div>
+    <div class="card-body d-flex justify-content-around">
+      <div class="card mx-3 p-3" style="width: 18rem; background-color: #e9ecef;">
+        <div class="card-body">
+          <h5 class="card-title">Fixed Deposit (FD)</h5>
+          <p class="card-text">Secure your savings with a guaranteed return.</p>
+          <a [routerLink]="['fd']" class="btn btn-primary">Apply Now</a>
+        </div>
+      </div>
+      <div class="card mx-3 p-3" style="width: 18rem; background-color: #e9ecef;">
+        <div class="card-body">
+          <h5 class="card-title">Mutual Fund</h5>
+          <p class="card-text">Invest in a diversified portfolio managed by experts of Hexaware bank.</p>
+          <a  [routerLink]="['mutual-funds']" class="btn btn-secondary">Apply Now</a>
+        </div>
+      </div>
+      <div class="card mx-3 p-3" style="width: 18rem; background-color: #e9ecef;">
+        <div class="card-body">
+          <h5 class="card-title">Bonds</h5>
+          <p class="card-text">Low-risk investment with steady income.</p>
+          <a  [routerLink]="['bonds']" class="btn btn-success">Apply Now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

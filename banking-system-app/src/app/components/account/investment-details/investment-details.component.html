@@ -1,0 +1,66 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header bg-primary text-white text-center">
+        Investment Details
+      </div>
+      <div class="card-body">
+        <form [formGroup]="investmentForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="investmentType" class="form-label">Investment Type</label>
+            <select id="investmentType" formControlName="investmentType" class="form-control">
+              <option value="">Select Investment Type</option>
+              <option *ngFor="let type of investmentTypes" [value]="type">
+                {{ type }}
+            </option>
+            </select>
+            <div *ngIf="investmentForm.controls['investmentType'].touched && investmentForm.controls['investmentType'].invalid">
+              <small class="text-danger">Investment type is required.</small>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" [disabled]="investmentForm.invalid">Get Details</button>
+        </form>
+  
+        <div *ngIf="investments.length > 0" class="mt-3">
+            <h3>Investments for {{ type }}</h3>
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th *ngIf="type === 'MUTUALFUNDS'">Fund Name</th>
+                  <th *ngIf="type === 'MUTUALFUNDS'">Units</th>
+                  <th *ngIf="type === 'MUTUALFUNDS'">Price per Unit</th>
+                  <th *ngIf="type === 'MUTUALFUNDS'">Total Value</th>
+                  
+                  <th *ngIf="type === 'BONDS'">Bond Type</th>
+                  <th *ngIf="type === 'BONDS'">Face Value</th>
+                  <th *ngIf="type === 'BONDS'">Interest Rate</th>
+                  
+                  <th *ngIf="type === 'FIXEDDEPOSITS'">Amount</th>
+                  <th *ngIf="type === 'FIXEDDEPOSITS'">Duration</th>
+                  <th *ngIf="type === 'FIXEDDEPOSITS'">Interest Rate</th>
+                  <th *ngIf="type === 'FIXEDDEPOSITS'">Maturity Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let investment of investments">
+                  <td *ngIf="type === 'MUTUALFUNDS'">{{ investment.fundName }}</td>
+                  <td *ngIf="type === 'MUTUALFUNDS'">{{ investment.unitsPurchased }}</td>
+                  <td *ngIf="type === 'MUTUALFUNDS'">₹{{ investment.purchasePrice }}</td>
+                  <td *ngIf="type === 'MUTUALFUNDS'">₹{{ investment.totalPrice.toFixed(2)}}</td>
+                  
+                  <td *ngIf="type === 'BONDS'">{{ investment.bondType }}</td>
+                  <td *ngIf="type === 'BONDS'">₹{{ investment.faceValue }}</td>
+                  <td *ngIf="type === 'BONDS'">{{ (investment.interestRate*100).toFixed(2) }}%</td>
+                  
+                  <td *ngIf="type === 'FIXEDDEPOSITS'">₹{{ investment.depositAmount }}</td>
+                  <td *ngIf="type === 'FIXEDDEPOSITS'">{{ investment.years }} years</td>
+                  <td *ngIf="type === 'FIXEDDEPOSITS'">{{ investment.interestRate }}%</td>
+                  <td *ngIf="type === 'FIXEDDEPOSITS'">{{ investment.maturityDate }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+  

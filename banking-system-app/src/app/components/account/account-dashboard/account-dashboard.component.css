@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .jumbotron {
+    padding: 2rem 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .lead{
+    text-align: center;
+    font-weight: bold;
+    color: #2441E5;
+    border: 1px #d8d8d8 solid;
+    margin: 5px;
+    padding: 5px;
+  }
+  
+  h2, h3 {
+    color: #333;
+  }

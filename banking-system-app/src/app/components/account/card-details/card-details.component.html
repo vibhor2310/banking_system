@@ -1,0 +1,35 @@
+<div class="container mt-5">
+    <div class="card">
+      <div class="card-header">
+        Card Details
+      </div>
+      <div class="card-body">
+        <div *ngIf="errorMsg" class="alert alert-danger">
+          {{ errorMsg }}
+        </div>
+        <table class="table table-bordered table-hover">
+          <thead class="thead-light">
+            <tr>
+              <th>Card Number</th>
+              <th>Card Type</th>
+              <th>Status</th>
+              <th>Expiry Date</th>
+              <th>CVV</th>
+              <th>Balance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let card of cards">
+              <td>{{ card.cardNumber }}</td>
+              <td>{{ card.cardType }}</td>
+              <td>{{ card.status }}</td>
+              <td>{{ card.expiryDate }}</td>
+              <td>{{ card.cvv }}</td>
+              <td>{{ card.account.balance }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
