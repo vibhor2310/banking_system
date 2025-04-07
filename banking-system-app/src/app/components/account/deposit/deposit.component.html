@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <div class="card">
       <div class="card-header">
         Deposit Money
@@ -24,3 +24,31 @@
     </div>
   </div>
   
+  -->
+
+  <div class="container mt-5">
+    <div class="card">
+        <div class="card-header">
+            Deposit Money
+        </div>
+        <div class="card-body">
+            <form [formGroup]="depositForm" (ngSubmit)="onFormSubmit()">
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount to Deposit</label>
+                    <input type="number" id="amount" formControlName="amount" class="form-control" placeholder="Enter amount">
+                    <div *ngIf="depositForm.controls['amount'].touched && depositForm.controls['amount'].invalid">
+                        <small class="text-danger">Amount is required and must be at least 1.</small>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" [disabled]="depositForm.invalid">Deposit</button>
+            </form>
+            <div *ngIf="successMsg" class="alert alert-success mt-3">
+                {{ successMsg }}
+            </div>
+            <div *ngIf="errorMsg" class="alert alert-danger mt-3">
+                {{ errorMsg }}
+            </div>
+        </div>
+    </div>
+</div>
+
